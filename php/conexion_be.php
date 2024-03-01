@@ -11,6 +11,4 @@
         echo 'Existe un probleMA Con La Conexion A La BD';
     }
     */
-
-
 ?>
