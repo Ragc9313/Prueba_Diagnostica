@@ -8,10 +8,11 @@
     $Contrasena = $_POST['Contrasena'];
 
     //Encriptacion de contraseña
-    $hash = password_hash($Contrasena, PASSWORD_DEFAULT,['cost' => 3]);
-    //Ingreso de los datos a la DB
+    $hash = password_hash($Contrasena, PASSWORD_DEFAULT, ['cost' => 12]);
+   
+    //Ingreso de los datos a la DB 
     $query = "INSERT INTO usuarios(Nombre_Completo, Email, Usuario, Contrasena) 
-              VALUES('$Nombre_Completo', '$Email', '$Usuario', '$Contrasena')";
+              VALUES('$Nombre_Completo', '$Email', '$Usuario', '$hash')";
               
     $ejecutar = mysqli_query($conexion, $query);
 

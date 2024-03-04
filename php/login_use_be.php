@@ -5,24 +5,38 @@
     $Email = $_POST['Email'];
     $Contrasena = $_POST['Contrasena'];
 
-    if(isset($_POST['button'])){
-        $val_login = mysqli_query($conexion, "SELECT*FROM usuarios WHERE Email='$Email' and Contrasena='$Contrasena'");
-        $nr = mysqli_num_rows($Email,);
-        $bcontra = mysqli_fetch_array($Contrasena);
-    }
-       
-    if(($nr == 1)&&(password_verify($Contrasena, $bcontra['Contrasena']))){
-        header("location: ../bienvenida.php");
-        exit;
-    }else{
+    // Obtener la contraseña almacenada de la base de datos
+    $query = "SELECT Contrasena FROM usuarios WHERE Email = '$Email'";
+    $resultado = mysqli_query($conexion, $query);
+
+    if ($fila = mysqli_fetch_assoc($resultado)) {
+    $hashAlmacenado = $fila['Contrasena'];
+
+    // Verificar la contraseña ingresada con la almacenada
+    if (password_verify($Contrasena, $hashAlmacenado)) {
         echo '
             <script>
-                alert("Usuario no encontrado, por favor verifica los datos ingresados");
+                alert("Inicio de sesión exitoso; Bienvenido");
+                window.location = "../bienvenida.php";
+            </script>
+        ';
+    } else {
+        echo '
+            <script>
+                alert("Contraseña incorrecta");
                 window.location = "../index.php";
             </script>
         ';
-        exit;
     }
+    } else {
+        echo '
+        <script>
+            alert("Usuario no encontrado");
+            window.location = "../index.php";
+        </script>
+    '; 
+}
 
+mysqli_close($conexion); ?>
 
 ?>
