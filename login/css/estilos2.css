@@ -1,0 +1,48 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    font-family: 'Calibri', sans-serif;
+}
+
+body{
+    background-image: url(../img/bg3.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+}
+
+#contenedor_principal {
+    display: flex;
+    width: 100%;
+    max-width: 800px;
+    margin: 75px ;
+    position: relative;
+    background-color: black;
+}
+
+.contenedor_izquierda {
+    background-color: black;
+}
+
+.contenedor_derecha {
+    align-content: center ;
+}
+
+.titulo{
+    text-align: center;
+    position: relative;;
+}
+
+.row{
+    margin-top: auto;
+}
+.col {
+    align-content:center;
+}
+
+.colum_list {
+    mar;
+}
